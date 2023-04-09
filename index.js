@@ -15,15 +15,15 @@ if (conversionsFromLocalStorage) { // checks the localStorage if there is an ele
 
 
 convertBtn.addEventListener("click", function(){ // when clicked calls the function and gets the input as a inputNum
-    get(inputValue), convert(inputNum)
+    getNum(inputValue), convert(inputNum)
     myConversions.push(inputValue.value) // pushes every input to the array
     inputValue.value = ""
     localStorage.setItem("myConversions", JSON.stringify(myConversions) ) // stores elements as myConversions and its values
     
 })
     
-function get(num) { // gets the input as a number and checks whether integer or string
-    let input = parseInt(num.value) // converts the input an integer
+function getNum(num) { // gets the input as a number and checks whether integer or string
+    let input = parseFloat(num.value) // converts the input an integer
     if(!isNaN(input)){ // if input is not a NAN 
         inputNum = input // stores the input to the inputNum to work with in other functions.
     } else {
@@ -33,20 +33,11 @@ function get(num) { // gets the input as a number and checks whether integer or 
 
 
 function convert(value) { //conversion
-    let meterToFeet = value * 3.281 //calculations of meter/feet 
-    let feetToMeter = value / 3.281
     
-    lentghOutput.innerHTML = `${value} meters = ${meterToFeet.toFixed(3)} feet | ${value} feet ${feetToMeter.toFixed(3)} meters` // writes the conversions as a output
-    
-    let litersToGallons = value * 0.264 // calculations of liter/gallons
-    let gallonsToLiters = value / 0.264
-    
-    volumeOutput.innerHTML = `${value} liters = ${litersToGallons.toFixed(3)} gallons | ${value} gallons = ${gallonsToLiters.toFixed(3)} liters` // writes the conversions as a output
-    
-    let kgToPounds = value * 2.204 // calculations of kg/pounds
-    let poundsToKg = value / 2.204
-    
-    massOutput.innerHTML = `${value} kilograms = ${kgToPounds.toFixed(3)} pounds | ${value} pounds = ${poundsToKg.toFixed(3)} kilograms` // writes the conversions as a output
+    lentghOutput.innerHTML = `${value} meters = ${(value * 3.281).toFixed(3)} feet | ${value} feet ${(value / 3.281).toFixed(3)} meters` // writes the conversions as a output
+        
+    volumeOutput.innerHTML = `${value} liters = ${(value * 0.264).toFixed(3)} gallons | ${value} gallons = ${(value / 0.264).toFixed(3)} liters` // writes the conversions as a output
+        
+    massOutput.innerHTML = `${value} kilograms = ${(value * 2.204).toFixed(3)} pounds | ${value} pounds = ${(value / 2.204).toFixed(3)} kilograms` // writes the conversions as a output
     
 }
-
