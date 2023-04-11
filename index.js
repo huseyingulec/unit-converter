@@ -27,6 +27,7 @@ function getNum(num) { // gets the input as a number and checks whether integer 
     if(!isNaN(input)){ // if input is not a NAN 
         inputNum = input // stores the input to the inputNum to work with in other functions.
     } else {
+        inputNum = 0
         alert("Please enter only numbers.") // gives an alert when user inputs non-integer elements
 }}
  
